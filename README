@@ -1,0 +1,20 @@
+Create a new deposition with file and upload to zenodo.org (current only upload 1 zipped file).
+Author: Bang Pham Huu - email: b.phamhuu@jacobs-university.de
+License: Apache License 2.0
+API examples: http://developers.zenodo.org/?python#quickstart-upload
+
+There are 3 python script files:
+
++ config.py: contains the access token from zenodo.org and sandbox.zenodo.org. They are different endpoints which needs
+2 different access tokens (Create user token from https://zenodo.org/account/settings/applications/ or (sandbox.zenodo.org). New token for Personal access tokens with scopes (deposit:actions and deposite:write)). Change here for the input source coder folder which will be compressed as tar.gz file and upload
+to Zenodo after running create.py and update.py.
+
++ create.py: will use config.py settings to create a newly deposition to Zenodo with all the metadata to describe the deposition and upload the tar.gz file to Zenodo, after that publish it to Zenodo (which means afer that, you cannot delete
+the published deposition). Only need to run this create.py script one time.
+
++ update.py: will use config.py settings to create a newly version of the last published deposition. It will read the new version and description values from change_log file. After that, it compresses the source coder folder to tar.gz and upload to 
+Zenodo and publish this draft deposition as a new version. You can run update.py script multiple times but each new version needs to change the version value in change_log file and the source code folder also needs to be different from the last update or Zenodo will reject the upload file request by checking hash code of the uploaded files.
+
+
+
+
